@@ -15,9 +15,12 @@
   "devDependencies": {
     "@types/aws-lambda": "^8.10.64",
     "@types/jest": "^26.0.14",
-    "serverless-bundle": "3.2.1",
-    "serverless-dotenv-plugin": "^3.0.0",
-    "serverless-offline": "^6.8.0"
+    "serverless-bundle": "^5.2.0",
+    "serverless-dotenv-plugin": "^3.10.0",
+    "serverless-offline": "^8.3.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@solana/web3.js": "^1.31.0",
+    "@solana/spl-token": "^0.1.8"
+  }
 }
