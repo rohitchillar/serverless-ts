@@ -1,6 +1,8 @@
 import { APIGatewayProxyHandler } from "aws-lambda";
-import { PublicKey, Connection } from '@solana/web3.js';
-import { AccountLayout,AccountInfo as TokenAccountInfo,u64 } from '@solana/spl-token';
+import { PublicKey, Connection,clusterApiUrl } from '@solana/web3.js';
+import { AccountLayout,MintLayout, AccountInfo as TokenAccountInfo,u64 } from '@solana/spl-token';
+import {getMetadata} from './helpers/accounts';
+import { decodeMetadata, Metadata } from './helpers/schema';
 
 type StringPublicKey = string;
 
@@ -81,9 +83,8 @@ const TokenAccountParser = (
 
 async function getInfo() {
 
-  const rpcUrl = 'https://api.devnet.solana.com';
-  const connection = new Connection(rpcUrl, 'confirmed');
-  const pubkey=new PublicKey('sfgArd1pGpQZVxqoA8LKxEozeNQSxXbBTEa5CFotpeN');
+  const connection = new Connection(clusterApiUrl('devnet'));
+  const pubkey=new PublicKey("HxzonnmGj5Y4FucguZE1kXz4KfRwLTtAAZo8yRTboPeQ");
   const accounts = await connection.getTokenAccountsByOwner(pubkey, {
     programId: new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"),
   });
@@ -97,10 +98,37 @@ async function getInfo() {
     ));
   });
 
-  return 1;
+  const items = arr.filter( (word) => {
+    return word.info.amount.toNumber()==1
+  })
+
+  const arr_meta=[]
+
+  for (let i = 0; i < items.length; i++) {
+    const mint = await connection.getAccountInfo(
+      items[i].info.mint,
+    );
+    const buffer = Buffer.from(mint.data);
+    const mintInfo = MintLayout.decode(buffer);
+    
+    if(mintInfo.decimals==0){
+      const metadata= await getMetadata(items[i].info.mint)
+      const metadataObj = await connection.getAccountInfo(metadata);
+      if(metadataObj){
+        const metadataDecoded: Metadata = decodeMetadata(
+          Buffer.from(metadataObj.data),
+        );
+        arr_meta.push(metadataDecoded);
+      }
+    }
+  }
+
+  return arr_meta;
+
 }
 
-export const hello: APIGatewayProxyHandler = async (event, context) => {
+export const hello: APIGatewayProxyHandler = async (event, context, callback) => {
+  //const wallet = event["queryStringParameters"]['wallet']
   const accounts = await getInfo();
   return {
     statusCode: 200,

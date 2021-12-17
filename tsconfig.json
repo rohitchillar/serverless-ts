@@ -4,6 +4,21 @@
     "target": "es6",
     "sourceMap": true,
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true
+    "declaration": false,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "removeComments": false,
+    "isolatedModules": false,
+    "experimentalDecorators": true,
+    "downlevelIteration": true,
+    "emitDecoratorMetadata": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true, 
+    "resolveJsonModule": true,
+  },
+  "exclude": ["node_modules", "typings/browser", "typings/browser.d.ts"],
+  "atom": {
+    "rewriteTsconfig": false
   }
 }

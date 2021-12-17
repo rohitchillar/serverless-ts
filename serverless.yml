@@ -30,3 +30,10 @@ functions:
       - http:
           path: hello
           method: get
+          # RequestParameters:
+          #   - method.request.querystring.wallet:
+          #       Required: true
+          #       Caching: false
+custom:
+  bundle:
+    linting: false
