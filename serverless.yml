@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: serverless-typescript-starter
+service: serverless-typescript-starter-chirag
 
 # Create an optimized package for our functions 
 package:

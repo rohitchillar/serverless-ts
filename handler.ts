@@ -97,7 +97,7 @@ async function getInfo() {
     ));
   });
 
-  return arr;
+  return 1;
 }
 
 export const hello: APIGatewayProxyHandler = async (event, context) => {
