@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: serverless-typescript-starter
+service: serverless-typescript-starter-rohit
 
 # Create an optimized package for our functions 
 package:
@@ -30,7 +30,10 @@ functions:
       - http:
           path: hello
           method: get
-
+          RequestParameters:
+            - method.request.querystring.wallet:
+                Required: true
+                Caching: false
 custom:
   bundle:
     linting: false
