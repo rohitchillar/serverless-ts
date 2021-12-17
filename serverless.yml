@@ -30,3 +30,7 @@ functions:
       - http:
           path: hello
           method: get
+
+custom:
+  bundle:
+    linting: false
