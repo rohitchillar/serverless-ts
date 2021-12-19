@@ -128,9 +128,10 @@ async function getInfo(wallet: string) {
 }
 
 export const hello: APIGatewayProxyHandler = async (event, context, callback) => {
+  //console.log("hi",event);
   const wallet = event["queryStringParameters"]['wallet']
   const accounts = await getInfo(wallet);
-  return {
+  return { 
     statusCode: 200,
     body: JSON.stringify(accounts,null,2),
   };

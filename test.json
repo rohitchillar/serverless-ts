@@ -1,0 +1,10 @@
+{
+    "pathParameters": null,
+    "stageVariables": null,
+    "body": "Hello from Lambda!",
+    "isBase64Encoded": false,
+
+    "queryStringParameters": {
+      "wallet": "4DAWL9yvEKH75hQstceykUPVuyWj4rwNZkgZyVKhU5d8"
+    }
+}
