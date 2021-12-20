@@ -1,21 +1,21 @@
-import {APIGatewayEvent, Context} from "aws-lambda";
-import * as handler from "../handler";
+// import {APIGatewayEvent, Context} from "aws-lambda";
+// import * as handler from "../handler";
 
-test("hello", async () => {
+// test("hello", async () => {
 
-  const event = {body : "xyz"} as APIGatewayEvent;
+//   const event = {body : "xyz"} as APIGatewayEvent;
   
-  //event.queryStringParameters={wallet: "4DAWL9yvEKH75hQstceykUPVuyWj4rwNZkgZyVKhU5d8"};
+//   //event.queryStringParameters={wallet: "4DAWL9yvEKH75hQstceykUPVuyWj4rwNZkgZyVKhU5d8"};
 
-  const context = {} as Context;
+//   const context = {} as Context;
 
-  const callback = (error, response) => {
-    expect(response.statusCode).toEqual(200);
-    expect(typeof response.body).toBe("string");
-  };
+//   const callback = (error, response) => {
+//     expect(response.statusCode).toEqual(200);
+//     expect(typeof response.body).toBe("string");
+//   };
 
-  //console.log(event);
+//   //console.log(event);
 
-  await handler.hello(event, context,callback);
+//   await handler.hello(event, context,callback);
 
-});
+// });

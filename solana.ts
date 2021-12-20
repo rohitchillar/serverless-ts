@@ -81,9 +81,12 @@ const TokenAccountParser = (
   }
 };
 
-async function getInfo(wallet: string) {
+export async function getInfo(wallet: string) {
 
-  const connection = new Connection(clusterApiUrl('devnet'));
+  const rpcUrl = 'https://empty-twilight-voice.solana-mainnet.quiknode.pro/cb060717df74bec2940ce107dd22847aefad7255/';
+  const connection = new Connection(rpcUrl, 'confirmed');
+
+  //const connection = new Connection(clusterApiUrl('devnet'));
   const pubkey=new PublicKey(wallet);
   const accounts = await connection.getTokenAccountsByOwner(pubkey, {
     programId: new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"),
@@ -102,7 +105,7 @@ async function getInfo(wallet: string) {
     return word.info.amount.toNumber()==1
   })
 
-  const arr_meta=[]
+  const arr_meta=[];
 
   for (let i = 0; i < items.length; i++) {
     const mint = await connection.getAccountInfo(
@@ -127,12 +130,12 @@ async function getInfo(wallet: string) {
 
 }
 
-export const hello: APIGatewayProxyHandler = async (event, context, callback) => {
-  //console.log("hi",event);
-  const wallet = event["queryStringParameters"]['wallet']
-  const accounts = await getInfo(wallet);
-  return { 
-    statusCode: 200,
-    body: JSON.stringify(accounts,null,2),
-  };
-};
+// export const hello: APIGatewayProxyHandler = async (event, context, callback) => {
+//   //console.log("hi",event);
+//   const wallet = event["queryStringParameters"]['wallet']
+//   const accounts = await getInfo(wallet);
+//   return { 
+//     statusCode: 200,
+//     body: 'Total NFTs : '+ accounts.length.toString()+ '\n' +JSON.stringify(accounts,null,2),
+//   };
+// };
