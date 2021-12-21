@@ -6,5 +6,11 @@
 
     "queryStringParameters": {
       "wallet": "AE6Z89ZL1yoN1iJCcc6UMCMzbeFbLtVQc691eqW4icY1"
+    },
+
+    "requestContext": {
+      "identity": {
+        "cognitoIdentityId": "USER-SUB-1234"
+      }
     }
 }

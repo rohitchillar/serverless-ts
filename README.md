@@ -133,3 +133,7 @@ To [override the default config](https://eslint.org/docs/user-guide/configuring)
 ---
 
 This repo is maintained by [Anomaly Innovations](https://anoma.ly); makers of [Seed](https://seed.run) and [Serverless Stack](https://serverless-stack.com).
+
+### Testing Authentication
+
+npx aws-api-gateway-cli-test --username='rohit.chillar31@gmail.com' --password='rohit123' --user-pool-id='us-east-1_863VJqWoF' --app-client-id='437hbpe27th1h7jpl4ta5o775t' --cognito-region='us-east-1' --identity-pool-id='us-east-1:855edc3c-bc7e-4255-97e1-80766b71e409' --invoke-url='https://b4vqsa7r4a.execute-api.us-east-1.amazonaws.com/dev' --path-template='/hello' --api-gateway-region='us-east-1' --method='GET' --additional-params='{"queryParams": {"wallet": "xgo4cbtWwiwnZbGxwTPZyXurLc9Lde2st77JNhKt29r"}}'

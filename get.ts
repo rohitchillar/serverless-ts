@@ -4,6 +4,8 @@ import {getInfo} from "./solana";
 
 export const main = handler(async (event, context) => {
 
+  console.log(event.requestContext.identity.cognitoIdentityId);
+
   const wallet = event["queryStringParameters"]['wallet']
   const params = {
     TableName: process.env.TABLENAME,

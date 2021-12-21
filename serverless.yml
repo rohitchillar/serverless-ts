@@ -52,6 +52,7 @@ functions:
             - method.request.querystring.wallet:
                 Required: true
                 Caching: false
+          authorizer: aws_iam
     timeout: 30
 
   # Defines an HTTP API endpoint that calls the main function in create.js
